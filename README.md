@@ -6,6 +6,8 @@ This project is a personal practice project to make Instagram UI based on Vue.
 ```
 yarn add vite
 yarn add axios
+yarn add mitt
+yarn add vuex@next
 ```
 
 ## Run & Build 
