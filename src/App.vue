@@ -11,7 +11,10 @@
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
-
+  <!--
+  <h4>Hi, {{ $store.state.name }}, {{ $store.state.age }}</h4>
+  <button @click="$store.commit('addAge', 10)">button</button>
+-->
   <Container
     :posts="posts"
     :tabNo="tabNo"
@@ -48,6 +51,7 @@ export default {
       getMoreCount: 0,
       tabNo: 0,
       uploadImageURL: "",
+      filter: "",
       newContent: "",
     };
   },
@@ -88,7 +92,7 @@ export default {
         date: "June 12",
         liked: false,
         content: this.newContent,
-        filter: "perpetua",
+        filter: this.filter,
       };
       this.posts.unshift(newPost);
       this.tabNo = 0;
@@ -97,6 +101,11 @@ export default {
       console.log(e);
       this.newContent = e;
     },
+  },
+  mounted() {
+    this.emitter.on("filter", (filter) => {
+      this.filter = filter;
+    });
   },
 };
 </script>
